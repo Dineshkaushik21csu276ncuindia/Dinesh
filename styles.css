@@ -4000,7 +4000,7 @@ s-works {
     vertical-align: bottom;
     transition    : all 0.3s ease-in-out;
     margin        : 0;
-    width         : 100%;
+    width         : auto;
     height        : auto;
 }
 
@@ -4069,6 +4069,7 @@ s-works {
     opacity         : 1;
     visibility      : visible;
 }
+
 
 /* ------------------------------------------------------------------- 
  * ## Testimonials Section
