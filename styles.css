@@ -3954,67 +3954,55 @@ td:last-child {
  *
  *
  * ------------------------------------------------------------------- */
+/* General Styles for the Works Section */
 .s-works {
-    padding-top   : var(--vspace-6);
+    padding-top: var(--vspace-6);
     padding-bottom: var(--vspace-1);
 }
 
 .folio-entries {
     --width-grid-max: 1400px;
-    margin-top      : var(--vspace-0_5);
+    margin-top: var(--vspace-0_5);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 /* ------------------------------------------------------------------- 
  * ## folio entries 
  * ------------------------------------------------------------------- */
 .folio-entries .entry {
-    flex    : none;
-    width   : 50%;
-    margin  : 0;
-    padding : 0;
+    flex: 1 1 50%; /* 50% width for desktop, will adjust on smaller screens */
+    margin: 0;
+    padding: 0;
     overflow: hidden;
     position: relative;
+    box-sizing: border-box;
 }
 
+/* On hover effects */
 .folio-entries .entry__link {
-    display : block;
+    display: block;
     position: relative;
 }
 
 .folio-entries .entry__link img {
     vertical-align: bottom;
-    transition    : all 0.3s ease-in-out;
-    margin        : 0;
+    transition: all 0.3s ease-in-out;
+    margin: 0;
+    width: 100%; /* Make sure images fill the entry */
 }
 
-.folio-entries .entry__link::before {
-    z-index         : 1;
-    content         : "";
-    display         : block;
-    background-color: var(--color-text-dark);
-    width           : 100%;
-    height          : 100%;
-    transition      : all, 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
-    opacity         : 0;
-    visibility      : hidden;
-    position        : absolute;
-    top             : 0;
-    left            : 0;
-}
-
-.folio-entries .entry {
-    position: relative;
-}
-
+/* Entry Info Style */
 .folio-entries .entry__info {
-    z-index   : 2;
-    transform : translate(-50%, 100%);
-    opacity   : 0;
+    z-index: 2;
+    transform: translate(-50%, 100%);
+    opacity: 0;
     visibility: hidden;
     text-align: center;
-    position  : absolute;
-    top       : 50%;
-    left      : 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 .folio-entries .entry__cat,
@@ -4023,49 +4011,48 @@ td:last-child {
 }
 
 .folio-entries .entry__cat {
-    font-size  : calc(var(--text-size) * 0.8);
+    font-size: calc(var(--text-size) * 0.8);
     line-height: 1.75;
-    color      : var(--color-gray-15);
+    color: var(--color-gray-15);
 }
 
 .folio-entries .entry__title {
-    font-weight  : 500;
-    font-size    : var(--text-size);
-    line-height  : 1.2;
-    margin-top   : 0;
+    font-weight: 500;
+    font-size: var(--text-size);
+    line-height: 1.2;
+    margin-top: 0;
     margin-bottom: var(--vspace-0_125);
-    color        : white;
+    color: white;
 }
 
-/* on hover
- */
+/* Hover Effects */
 .folio-entries .entry:focus .entry__link::before,
 .folio-entries .entry:hover .entry__link::before {
-    opacity   : 1;
+    opacity: 1;
     visibility: visible;
 }
 
 .folio-entries .entry:focus .entry__info,
 .folio-entries .entry:hover .entry__info {
-    transform       : translate(-50%, -50%);
-    transition      : all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate(-50%, -50%);
+    transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
     transition-delay: 0.3s;
-    opacity         : 1;
-    visibility      : visible;
+    opacity: 1;
+    visibility: visible;
 }
 
 /* ------------------------------------------------------------------- 
- * ## testimonials
+ * ## Testimonials Section
  * ------------------------------------------------------------------- */
- .s-testimonials {
-    padding-top   : var(--vspace-4_5);
+.s-testimonials {
+    padding-top: var(--vspace-4_5);
     padding-bottom: var(--vspace-4);
 }
 
 .s-testimonials__header {
-    margin-top   : 0;
+    margin-top: 0;
     margin-bottom: var(--vspace-2);
-    text-align   : center;
+    text-align: center;
 }
 
 .s-testimonials .swiper-container {
@@ -4075,26 +4062,102 @@ td:last-child {
 /* Slide Container for 1x3 Matrix */
 .swiper-slide {
     display: flex;
-    justify-content: center; /* Centering the 3 columns */
-    padding: 20px 0; /* Optional: adjust top and bottom padding */
+    justify-content: center;
+    padding: 20px 0;
 }
 
 /* Matrix Layout */
 .matrix {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 20px; /* Spacing between boxes */
-    width: 100%; /* Ensure it takes full width */
+    grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
+    gap: 20px;
+    width: 100%;
 }
 
 /* Each Box (Project) */
 .box {
-    background-color: #f7f7f7; /* Light background for each box */
+    background-color: #f7f7f7;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }
+
+/* -------------------------------------------------------------------
+ * ## Responsive Styles
+ * ------------------------------------------------------------------- */
+
+/* Medium screens and below (tablets) */
+@media screen and (max-width: 1024px) {
+    .folio-entries .entry {
+        flex: 1 1 48%; /* 2 columns layout on tablets */
+    }
+
+    .folio-entries .entry__title {
+        font-size: calc(var(--text-size) * 0.9);
+    }
+
+    .folio-entries .entry__cat {
+        font-size: calc(var(--text-size) * 0.7);
+    }
+
+    .matrix {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    }
+
+    /* Make the image bigger on smaller screens */
+    .folio-entries .entry__link img {
+        max-height: 500px; /* Increase the size on smaller screens */
+        object-fit: contain;
+    }
+}
+
+/* Small screens (mobiles) */
+@media screen and (max-width: 768px) {
+    .folio-entries .entry {
+        flex: 1 1 100%; /* Full width on mobile */
+    }
+
+    .folio-entries .entry__title {
+        font-size: calc(var(--text-size) * 0.8);
+    }
+
+    .folio-entries .entry__cat {
+        font-size: calc(var(--text-size) * 0.6);
+    }
+
+    .matrix {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+
+    /* Increase the image size even more on mobile screens */
+    .folio-entries .entry__link img {
+        max-height: 600px; /* Larger image size on mobile */
+        object-fit: contain;
+    }
+}
+
+/* Extra small screens (portrait phones) */
+@media screen and (max-width: 480px) {
+    .folio-entries .entry__info {
+        font-size: calc(var(--text-size) * 0.75); /* Adjust text size */
+    }
+
+    .folio-entries .entry__title {
+        font-size: calc(var(--text-size) * 0.75);
+    }
+
+    .folio-entries .entry__cat {
+        font-size: calc(var(--text-size) * 0.5);
+    }
+
+    /* Increase the image size even more on portrait mobile screens */
+    .folio-entries .entry__link img {
+        max-height: 700px; /* Maximize image size on extra small screens */
+        object-fit: contain;
+    }
+}
+
 
 /* Individual Project Style */
 .s-testimonials__slide {
@@ -4151,7 +4214,17 @@ td:last-child {
  * responsive:
  * works
  * ------------------------------------------------------------------- */
+
+/* Tablet (800px and below) */
 @media screen and (max-width: 800px) {
+    .matrix {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    }
+
+    .s-testimonials__header {
+        font-size: 1.75rem; /* Slightly smaller header */
+    }
+
     .folio-entries .entry__cat {
         font-size: calc(var(--text-size) * 0.7);
     }
@@ -4169,13 +4242,39 @@ td:last-child {
     }
 }
 
+/* Mobile (500px and below) */
 @media screen and (max-width: 500px) {
-    .folio-entries .entry {
-        width: 100%;
+    .matrix {
+        grid-template-columns: 1fr;  /* Single column on mobile */
+    }
+
+    .box {
+        padding: 15px;
+        box-shadow: none;  /* Optional: Remove box-shadow for mobile */
+    }
+
+    .s-testimonials__header {
+        font-size: 1.5rem;  /* Smaller header */
+        margin-bottom: 15px;
+    }
+
+    .s-testimonials__avatar {
+        width: var(--vspace-1_5);  /* Smaller avatar */
+        height: var(--vspace-1_5);
+    }
+
+    .swiper-container {
+        padding-bottom: 40px; /* To ensure swiper pagination is visible on mobile */
+    }
+
+    .folio-entries .entry__cat {
+        font-size: calc(var(--text-size) * 0.65);
+    }
+
+    .folio-entries .entry__title {
+        font-size: calc(var(--text-size) * 0.8);
     }
 }
-
-
 /* ===================================================================
  * # NUMBERS
  *
