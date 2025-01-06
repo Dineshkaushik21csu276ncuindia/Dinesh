@@ -4000,7 +4000,7 @@ s-works {
     vertical-align: bottom;
     transition    : all 0.3s ease-in-out;
     margin        : 0;
-    width         : auto;
+    width         : 100%;
     height        : auto;
 }
 
@@ -4070,7 +4070,6 @@ s-works {
     visibility      : visible;
 }
 
-
 /* ------------------------------------------------------------------- 
  * ## Testimonials Section
  * ------------------------------------------------------------------- */
@@ -4090,28 +4089,78 @@ s-works {
 }
 
 /* Slide Container for 1x3 Matrix */
-.swiper-slide {
+/* Default carousel styling for larger screens */
+.swiper-container {
     display: flex;
-    justify-content: center;
-    padding: 20px 0;
+    flex-wrap: nowrap;
 }
 
-/* Matrix Layout */
-.matrix {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
-    gap: 20px;
-    width: 100%;
-}
-
-/* Each Box (Project) */
-.box {
-    background-color: #f7f7f7;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.swiper-slide {
+    flex: 0 0 calc(100% / 3); /* Show 3 items per view */
     box-sizing: border-box;
 }
+
+/* Single-item grid for smaller screens */
+@media screen and (max-width: 768px) {
+    .swiper-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 20px; /* Adjust spacing as needed */
+    }
+
+    .swiper-slide {
+        flex: 0 0 100%; /* Full width for grid */
+    }
+}
+/* Ensure all slides have a uniform structure */
+.uniform-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #f9f9f9; /* Light background for contrast */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-height: 250px; /* Consistent height for all slides */
+    max-width: 300px;  /* Optional: Set max width */
+    margin: 0 auto;    /* Center the content */
+}
+
+/* Ensure avatar images are consistent */
+.s-testimonials__avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+}
+
+/* Slide author citation */
+.s-testimonials__cite {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.s-testimonials__cite span {
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    color: #666;
+}
+
+/* Consistent typography for description */
+.uniform-slide p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    margin-top: 10px;
+}
+
 
 /* -------------------------------------------------------------------
  * ## Responsive Styles
@@ -4244,6 +4293,33 @@ s-works {
  * responsive:
  * works
  * ------------------------------------------------------------------- */
+
+ /* General styling for project images */
+.entry__thumb img {
+    width: 100%; /* Ensure the image fills its container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensure proper rendering */
+    object-fit: cover; /* Ensure the image adapts without distortion */
+    max-width: 100%; /* Prevent overflow on smaller screens */
+    margin: 0 auto; /* Center the image */
+}
+
+/* Adjust layout for smaller screens */
+@media screen and (max-width: 768px) {
+    .folio-entries {
+        flex-direction: column; /* Stack entries vertically */
+        gap: 20px; /* Add spacing between entries */
+    }
+
+    .entry {
+        flex: 1 1 100%; /* Full width for each entry */
+        max-width: 100%; /* Ensure no horizontal overflow */
+    }
+
+    .entry__thumb img {
+        max-height: 300px; /* Limit image height on small screens */
+    }
+}
 
 /* Tablet (800px and below) */
 @media screen and (max-width: 800px) {
