@@ -4071,9 +4071,9 @@ s-works {
 }
 
 /* ------------------------------------------------------------------- 
- * ## Testimonials Section
+ * ## Updated Testimonials Section for Box Layout 
  * ------------------------------------------------------------------- */
-.s-testimonials {
+ .s-testimonials {
     padding-top: var(--vspace-4_5);
     padding-bottom: var(--vspace-4);
 }
@@ -4084,209 +4084,69 @@ s-works {
     text-align: center;
 }
 
-.s-testimonials .swiper-container {
-    padding-bottom: var(--vspace-2);
-}
-
-/* Slide Container for 1x3 Matrix */
-/* Default carousel styling for larger screens */
-.swiper-container {
-    display: flex;
-    flex-wrap: nowrap;
-}
-
-.swiper-slide {
-    flex: 0 0 calc(100% / 3); /* Show 3 items per view */
-    box-sizing: border-box;
-}
-
-/* Single-item grid for smaller screens */
-@media screen and (max-width: 768px) {
-    .swiper-container {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-gap: 20px; /* Adjust spacing as needed */
-    }
-
-    .swiper-slide {
-        flex: 0 0 100%; /* Full width for grid */
-    }
-}
-/* Ensure all slides have a uniform structure */
-.uniform-slide {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: #f9f9f9; /* Light background for contrast */
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.s-testimonials__intro {
     text-align: center;
-    min-height: 250px; /* Consistent height for all slides */
-    max-width: 300px;  /* Optional: Set max width */
-    margin: 0 auto;    /* Center the content */
-}
-
-/* Ensure avatar images are consistent */
-.s-testimonials__avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+    font-size: 1.5rem;
+    color: #555;
     margin-bottom: 10px;
-    object-fit: cover;
-    border: 2px solid #ddd;
 }
 
-/* Slide author citation */
-.s-testimonials__cite {
-    font-size: 16px;
-    font-weight: bold;
+.internships-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.internship-box {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.internship-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.internship-logo {
+    max-width: 100px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+}
+
+.internship-box h4 {
+    font-size: 1.2em;
     margin-bottom: 10px;
     color: #333;
 }
 
-.s-testimonials__cite span {
-    display: block;
-    font-size: 14px;
-    font-weight: normal;
-    color: #666;
-}
-
-/* Consistent typography for description */
-.uniform-slide p {
-    font-size: 14px;
-    line-height: 1.5;
+.internship-box p {
+    font-size: 0.9em;
     color: #555;
-    margin-top: 10px;
 }
 
-
-/* -------------------------------------------------------------------
- * ## Responsive Styles
- * ------------------------------------------------------------------- */
-
-/* Medium screens and below (tablets) */
-@media screen and (max-width: 1024px) {
-    .folio-entries .entry {
-        flex: 1 1 48%; /* 2 columns layout on tablets */
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .internships-container {
+        grid-template-columns: 1fr;
     }
 
-    .folio-entries .entry__title {
-        font-size: calc(var(--text-size) * 0.9);
+    .internship-box {
+        padding: 15px;
     }
 
-    .folio-entries .entry__cat {
-        font-size: calc(var(--text-size) * 0.7);
+    .internship-box h4 {
+        font-size: 1em;
     }
 
-    .matrix {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+    .internship-box p {
+        font-size: 0.8em;
     }
-
-    /* Make the image bigger on smaller screens */
-    .folio-entries .entry__link img {
-        max-height: 500px; /* Increase the size on smaller screens */
-        object-fit: contain;
-    }
-}
-
-/* Small screens (mobiles) */
-@media screen and (max-width: 768px) {
-    .folio-entries .entry {
-        flex: 1 1 100%; /* Full width on mobile */
-    }
-
-    .folio-entries .entry__title {
-        font-size: calc(var(--text-size) * 0.8);
-    }
-
-    .folio-entries .entry__cat {
-        font-size: calc(var(--text-size) * 0.6);
-    }
-
-    .matrix {
-        grid-template-columns: 1fr; /* 1 column on mobile */
-    }
-
-    /* Ensure images are visible and increase size on mobile */
-    .folio-entries .entry__link img {
-        max-height: 600px; /* Larger image size on mobile */
-        object-fit: contain;
-    }
-}
-
-/* Extra small screens (portrait phones) */
-@media screen and (max-width: 480px) {
-    .folio-entries .entry__info {
-        font-size: calc(var(--text-size) * 0.75); /* Adjust text size */
-    }
-
-    .folio-entries .entry__title {
-        font-size: calc(var(--text-size) * 0.75);
-    }
-
-    .folio-entries .entry__cat {
-        font-size: calc(var(--text-size) * 0.5);
-    }
-
-    /* Increase the image size even more on portrait mobile screens */
-    .folio-entries .entry__link img {
-        max-height: 700px; /* Maximize image size on extra small screens */
-        object-fit: contain;
-    }
-}
-
-
-/* Individual Project Style */
-.s-testimonials__slide {
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.s-testimonials__author {
-    display      : inline-block;
-    min-height   : var(--vspace-2);
-    margin-bottom: var(--vspace-0_625);
-    padding-left : calc(2.25 * var(--space));
-    position     : relative;
-}
-
-.s-testimonials__avatar {
-    width        : var(--vspace-1_75);
-    height       : var(--vspace-1_75);
-    border-radius: 100%;
-    outline      : none;
-    position     : absolute;
-    top          : 0;
-    left         : 0;
-}
-
-.s-testimonials__cite {
-    display: block;
-}
-
-.s-testimonials__cite strong,
-.s-testimonials__cite span {
-    font-style: normal;
-    transition: all 0.3s ease-in-out;
-}
-
-.s-testimonials__cite strong {
-    font-size  : calc(var(--text-size) * 0.9);
-    font-weight: 500;
-    line-height: var(--vspace-0_75);
-    color      : var(--color-text-dark);
-}
-
-.s-testimonials__cite span {
-    display    : block;
-    font-size  : calc(var(--text-size) * 0.75);
-    font-weight: 400;
-    line-height: var(--vspace-0_5);
-    color      : var(--color-text-light);
 }
 
 /* ------------------------------------------------------------------- 
