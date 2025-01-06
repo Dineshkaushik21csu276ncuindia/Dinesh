@@ -4078,24 +4078,58 @@ s-works {
     padding-bottom: var(--vspace-4);
 }
 
+/* Default font size for larger screens */
 .s-testimonials__header {
     margin-top: 0;
     margin-bottom: var(--vspace-2);
     text-align: center;
+    font-size: 3rem; /* Default size for larger screens */
+    gap: 10px;
+    margin-bottom: 05 px;
 }
+
+/* For tablet-sized screens */
+@media (max-width: 1024px) {
+    .s-testimonials__header {
+        font-size: 2.5rem; /* Adjust for tablets */
+    }
+}
+
+/* For mobile-sized screens */
+@media (max-width: 768px) {
+    .s-testimonials__header {
+        font-size: 2rem; /* Slightly smaller for mobile */
+    }
+}
+
+/* For extra small mobile screens */
+@media (max-width: 480px) {
+    .s-testimonials__header {
+        font-size: 1.8rem; /* Adjust for smaller phones */
+    }
+}
+
+/* Ensure it scales correctly across all screen sizes */
+@media (max-width: 360px) {
+    .s-testimonials__header {
+        font-size: 1.6rem; /* Adjust for very small mobile screens */
+    }
+}
+
 
 .s-testimonials__intro {
     text-align: center;
     font-size: 1.5rem;
     color: #555;
-    margin-bottom: 10px;
+    margin-bottom: 05 px;
+    gap: 10px;
 }
 
 .internships-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
+    gap: 10px;
+    margin-top: 10px;
 }
 
 .internship-box {
