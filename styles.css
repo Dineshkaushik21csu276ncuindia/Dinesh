@@ -1517,6 +1517,7 @@ hr.fancy::before {
  * -------------------------------------------------------------------- */
 .lead,
 .attention-getter {
+    text-align: justify;
     font-family: var(--font-1);
     font-size  : var(--text-md);
     line-height: var(--vspace-1_25);
@@ -1526,6 +1527,7 @@ hr.fancy::before {
 
     .lead,
     .attention-getter {
+        text-align: justify;
         font-size  : calc(var(--text-size) * 1.1);
         line-height: calc(1.125 * var(--space));
     }
@@ -1535,6 +1537,7 @@ hr.fancy::before {
 
     .lead,
     .attention-getter {
+        text-align: justify;
         font-size  : var(--text-size);
         line-height: var(--vspace-1);
     }
